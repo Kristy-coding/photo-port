@@ -1,4 +1,5 @@
 import React from 'react';
+import { capitalizeFirstLetter } from "../../utils/helpers";
 
 
 function Nav() {
@@ -22,7 +23,7 @@ function Nav() {
       }
 
     return(
-        <header>
+        <header data-testid="header" className="flex-row px-1">
             <h2>
                 <a href ="/">
                     <span role="img" aria-label="camera">📸</span> Oh Snap!
@@ -46,7 +47,7 @@ function Nav() {
                             {/*Now that we've provided a function name to onClick(), we need to define it somewhere above the return statemen */}
                             {/*The onClick() attribute is expecting a callback function declaration. It's important that we wrap it in a function declaration rather than just calling categorySelected(category.name), which would cause the function to get called whenever the component renders as well */}
                             <span onClick={ ()=> categorySelected(category.name)}>
-                                {category.name}
+                                {capitalizeFirstLetter (category.name)}
                             </span>
                         </li>
                     ))}
