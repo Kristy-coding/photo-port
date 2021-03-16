@@ -1,3 +1,5 @@
+//** the point of testing ...Visually, there isn't much of a difference from what we accomplished in the first lesson, but our app is now tested. Now we can have peace of mind that we can change things and know instantly whether or not the change broke any component
+
 //In index.test.js, add the following code to import the packages we'll need to test the Nav component:
 
 import React from 'react';

@@ -1,3 +1,5 @@
+// ** the point of testing ...Visually, there isn't much of a difference from what we accomplished in the first lesson, but our app is now tested. Now we can have peace of mind that we can change things and know instantly whether or not the change broke any component
+
 //We need react to enable the components to function properly so we can test them
 import React from 'react';
 
