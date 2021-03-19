@@ -140,7 +140,15 @@
 
 import React, { useState } from 'react';
 
+import Modal from '../Modal';
+
 const PhotoList = ({ category}) => {
+
+  const [currentPhoto, setCurrentPhoto] = useState();
+
+  //In this expression, we set the initial state of isModalOpen to false, because we don't want the modal to open until a user has clicked on an image
+  //Next, let's use the short-circuit AND operator, &&, to only render the modal if the isModalOpen value is true
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const [photos] = useState([
     {
@@ -242,8 +250,23 @@ const PhotoList = ({ category}) => {
 
   const currentPhotos = photos.filter((photo) => photo.category === category);
 
+  const toggleModal = (image, i) =>{
+
+    //use a Hook in photoList component to manage the state of the current photo.
+    //currnet photo
+
+    setCurrentPhoto({...image, index: i});
+    setIsModalOpen(true);
+
+
+  };
+
   return (
     <div>
+      { isModalOpen &&
+      <Modal currentPhoto={currentPhoto} />
+      //The preceding statement will only render the Modal if the value isModalOpen is true, which is precisely what we want. In the next step, we want to open the modal when a user has clicked on an image. We'll do that by modifying the click handler, toggleModal, so that it updates the isModalOpen value to true. This will evaluate the short circuit in the preceding code statement to render the modal
+      }
       <div className="flex-row">
         {currentPhotos.map((image, i) => (
 
@@ -252,6 +275,7 @@ const PhotoList = ({ category}) => {
             src={require(`../../assets/small/${category}/${i}.jpg`).default}
             alt={image.name}
             className="img-thumbnail mx-1"
+            onClick={() => toggleModal(image, i)}
             key={image.name}
           />
         ))}
