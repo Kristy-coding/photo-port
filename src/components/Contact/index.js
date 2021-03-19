@@ -74,7 +74,7 @@ function ContactForm(){
     //Due to keywords reserved in JavaScript, we need to replace the for attribute in the <label> element to htmlFor, just as class had to be changed to className previously
     return (
         <section>
-            <h1>Contact me</h1>
+            <h1 data-testid="h1tag">Contact me</h1>
             <form id= "contact-form" onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor= "name">Name:</label>
@@ -107,7 +107,7 @@ function ContactForm(){
                     
                     These two conditional statements are the same. If errorMessage has a truthy value, the <div> block will render. If errorMessage doesn't have an error message, the following <div> block doesn't render. The && operator—known as the AND operator—is being used here as a short circuit. If the first value resolves to true, the second expression is evaluated
                 */}
-                <button type="submit">Submit</button>
+                <button type="submit" data-testid='submitBtn'>Submit</button>
             </form>
         </section>
     )

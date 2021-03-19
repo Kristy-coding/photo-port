@@ -12,6 +12,8 @@ const categories = [
   ]
   const mockCurrentCategory = jest.fn();
   const mockSetCurrentCategory = jest.fn();
+  const mockContactSelected = jest.fn();
+  const mockSetContactSelected = jest.fn();
 
 //Next we'll configure the testing environment by adding the cleanup utility and the describe function, just like we did for the About component
 
@@ -32,6 +34,8 @@ describe('Nav component', ()=>{
           categories={categories}
           setCurrentCategory={mockSetCurrentCategory}
           currentCategory={mockCurrentCategory}
+          contactSelected={mockContactSelected}
+          setContactSelected={mockSetContactSelected}
         />);
       })
 
@@ -41,6 +45,8 @@ describe('Nav component', ()=>{
             categories={categories}
             setCurrentCategory={mockSetCurrentCategory}
             currentCategory={mockCurrentCategory}
+            contactSelected={mockContactSelected}
+            setContactSelected={mockSetContactSelected}
           />);
         // assert value comparison
         // we will use the expect function and the matcher, .toMatchSnapshot(), to write our snapshot assertion
@@ -59,6 +65,8 @@ describe('emoji si visible', ()=> {
             categories={categories}
             setCurrentCategory={mockSetCurrentCategory}
             currentCategory={mockCurrentCategory}
+            contactSelected={mockContactSelected}
+            setContactSelected={mockSetContactSelected}
           />);
 
         // Assert
@@ -90,6 +98,10 @@ describe('links are visible', ()=> {
             categories={categories}
             setCurrentCategory={mockSetCurrentCategory}
             currentCategory={mockCurrentCategory}
+            contactSelected={mockContactSelected}
+            setContactSelected={mockSetContactSelected}
+
+            
           />);
         
 
