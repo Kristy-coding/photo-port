@@ -256,17 +256,19 @@ const PhotoList = ({ category}) => {
     //currnet photo
 
     setCurrentPhoto({...image, index: i});
-    setIsModalOpen(true);
+
+    // is modal open starts as False so by using !isModalOpen we are setting the value to true??
+    setIsModalOpen(!isModalOpen);
 
 
   };
 
   return (
     <div>
-      { isModalOpen &&
-      <Modal currentPhoto={currentPhoto} />
-      //The preceding statement will only render the Modal if the value isModalOpen is true, which is precisely what we want. In the next step, we want to open the modal when a user has clicked on an image. We'll do that by modifying the click handler, toggleModal, so that it updates the isModalOpen value to true. This will evaluate the short circuit in the preceding code statement to render the modal
-      }
+      { isModalOpen && (
+      <Modal currentPhoto={currentPhoto} onClose={toggleModal} />
+      //In the preceding expression, the onClose identifier was assigned the function toggleModal , we can pass onClose as a prop into the modal component
+      )}
       <div className="flex-row">
         {currentPhotos.map((image, i) => (
 
