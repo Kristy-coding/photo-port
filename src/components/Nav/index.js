@@ -81,6 +81,8 @@ function Nav(props) {
     categories = [],
     setCurrentCategory,
     currentCategory,
+    contactSelected,
+    setContactSelected
   } = props;
 
   useEffect(() => {
@@ -97,25 +99,34 @@ function Nav(props) {
       <nav>
         <ul className="flex-row">
           <li className="mx-2">
-            <a data-testid="about" href="#about">
+            {/*Now add the click handler to set the value of contactSelected based on the user's selection*
+            As the preceding statement shows, when About is selected, contactSelected is set to false, and the About component is rendered via the App.js page*/}
+            <a data-testid="about" href="#about" onClick={()=> setContactSelected(false)}>
               About me
             </a>
           </li>
-          <li className="mx-2">
-            <span>Contact</span>
+          {/*In the class attribute, we'll add a JavaScript conditional statement. If the value of contactSelected is true, which means that the user selected Contact, we want to add the CSS class navActive, which will illuminate the background. We'll use the && operator as a short circuit, as shown in the following statement:*/}
+          <li className={`mx-2 ${contactSelected && 'navActive'}`}>
+            {/* to render the contact form  set the value of contactSelected to true when selecting the Contact item in the menu*/}
+            <span onClick={()=> setContactSelected(true)}>Contact</span>
           </li>
           {categories.map((category) => (
+
+            //category name li
             <li
               className={`mx-1 ${
-                currentCategory.name === category.name && 'navActive'
+              //*Note also that the navActive class value is assigned only if Contact hasn't been selected and the current category HAS been selected
+                currentCategory.name === category.name && !contactSelected && 'navActive'
                 }`}
               key={category.name}
             >
               <span
                 onClick={() => {
-                  setCurrentCategory(category)
+                  setCurrentCategory(category);
+                  setContactSelected(false);
                 }}
               >
+                {/* gallery name*/}
                 {capitalizeFirstLetter(category.name)}
               </span>
             </li>
